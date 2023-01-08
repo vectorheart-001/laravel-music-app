@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\MusicListingController;
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +27,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+Route::get('/', [Controllers\TrackController::class, 'index']);
+Route::resource('tracks', Controllers\TrackController::class);
