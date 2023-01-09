@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Track extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','artist','album','cover_path'];
-
-    public function User() {
+    protected $fillable = ['name','artist','album','user_id','track_link'];
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

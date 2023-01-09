@@ -35,8 +35,9 @@
                     <input type="text" name="artist" class="form-control" placeholder="Name">
                     <strong>Album:</strong>
                     <input type="text" name="album" class="form-control" placeholder="Name">
-                    <strong>Artist:</strong>
-                    <input type="artist" name="name" class="form-control" placeholder="Name">
+                    <strong>Link to track:</strong>
+                    <input type="text" name="track_link" class="form-control" placeholder="Name">
+
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="inputImage">Select Image:</label>

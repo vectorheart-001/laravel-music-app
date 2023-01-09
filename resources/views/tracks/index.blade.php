@@ -23,13 +23,14 @@
             <th>ID</th>
             <th>Name</th>
             <th>Artist</th>
-            <th width="280px">Action</th>
+            <th width="280px">User_Id</th>
         </tr>
         @foreach ($tracks as $track)
             <tr>
                 <td>{{ $track->id }}</td>
                 <td>{{ $track->name }}</td>
                 <td>{{ $track->artist}}</td>
+                <td>{{ $track->user_id}}</td>
                 <td>
                     <form action="{{ route('tracks.destroy',$track->id) }}" method="POST">
                         <a class="btn btn-info" href="{{ route('tracks.show',$track->id) }}">Show</a>

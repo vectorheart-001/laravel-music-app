@@ -29,3 +29,4 @@ Route::middleware([
 });
 Route::get('/', [Controllers\TrackController::class, 'index']);
 Route::resource('tracks', Controllers\TrackController::class);
+Route::resource('comments',Controllers\CommentController::class);

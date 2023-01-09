@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Track;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TrackController extends Controller
 {
@@ -45,10 +46,18 @@ class TrackController extends Controller
             'artist' => 'required',
 
         ]);
-        Track::create($request->all());
+        $track_data = [
+            'name' => $request->input('name'),
+            'artist' => $request->input('artist'),
+            'album' => $request->input('album'),
+            'track_link' => $request->input('track_link'),
+            'user_id'=> Auth::id(),
+        ];
+        Track::create($track_data);
+
 
         return redirect()->route('tracks.index')
-            ->with('success','Track created successfully.');
+            ->with('success',Auth::id());
     }
 
     /**
@@ -70,7 +79,7 @@ class TrackController extends Controller
      */
     public function edit(Track $track)
     {
-        return view('trakcs.edit',compact('track'));
+        return view('tracks.edit',compact('track'));
     }
 
     /**
