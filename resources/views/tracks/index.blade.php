@@ -1,5 +1,5 @@
 @extends('tracks.layout')
-
+@vite('resources/css/app.css')
 @section('content')
     <div class="row">
         <div class="col-lg-12">
