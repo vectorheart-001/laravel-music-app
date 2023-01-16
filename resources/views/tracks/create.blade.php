@@ -23,7 +23,7 @@
         </div>
     @endif
 
-    <form action="{{ route('tracks.store') }}" method="POST">
+    <form action="{{ route('tracks.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="row">
@@ -39,7 +39,7 @@
                     <input type="text" name="track_link" class="form-control" placeholder="Name">
 
                 </div>
-                <div class="mb-3">
+                 <div class="mb-3">
                     <label class="form-label" for="inputImage">Select Image:</label>
                     <input
                         type="file"
@@ -47,14 +47,12 @@
                         id="inputImage"
                         class="form-control @error('image') is-invalid @enderror">
 
-                    @error('image')
+                    <!-- @error('image')
                     <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    @enderror -->
                 </div>
 
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-success">Upload</button>
-                </div>
+
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

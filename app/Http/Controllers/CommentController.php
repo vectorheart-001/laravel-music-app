@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Track;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -12,9 +14,12 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    /**public function index()
     {
-        //
+        $tracks = Track::latest()->paginate(5);
+
+        return compact('tracks')
+            ->with(request()->input('page'));
     }
 
     /**
@@ -24,7 +29,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +40,20 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $track_id = $request ->input('track_id');
+        $comment_data = [
+            'content' => $request->input('comment'),
+            'track_id' => $request->input('track_id'),
+            'user_id'=> Auth::id(),
+        ];
+        Comment::create($comment_data);
+
+
+        return redirect()->route('tracks.show',$track_id)
+            ->with('success','Comment posted successfully');
+
+
+
     }
 
     /**

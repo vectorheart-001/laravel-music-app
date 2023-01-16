@@ -41,10 +41,11 @@ class TrackController extends Controller
     public function store(Request $request)
     {
 
+
         $request->validate([
             'name' => 'required',
             'artist' => 'required',
-
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $track_data = [
             'name' => $request->input('name'),
@@ -52,12 +53,33 @@ class TrackController extends Controller
             'album' => $request->input('album'),
             'track_link' => $request->input('track_link'),
             'user_id'=> Auth::id(),
+
         ];
+
+        if($request->hasFile('image'))
+        {
+            $file =$request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time().'.'.$extension;
+            $file->move('images/',$fileName);
+
+        }
+        $track_data = [
+            'name' => $request->input('name'),
+            'artist' => $request->input('artist'),
+            'album' => $request->input('album'),
+            'track_link' => $request->input('track_link'),
+            'user_id'=> Auth::id(),
+            'cover_path' => $fileName
+        ];
+
+
+
         Track::create($track_data);
 
-
         return redirect()->route('tracks.index')
-            ->with('success',Auth::id());
+            ->with('success','Track created successfully');
+
     }
 
     /**
@@ -66,8 +88,10 @@ class TrackController extends Controller
      * @param  \App\Models\Track  $track
      * @return \Illuminate\Http\Response
      */
-    public function show(Track $track)
+    public function show($track)
     {
+        $track = Track::with('comments.user')->find($track);
+
         return view('tracks.show',compact('track'));
     }
 
