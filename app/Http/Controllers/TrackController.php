@@ -13,9 +13,19 @@ class TrackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tracks = Track::latest()->paginate(5);
+        $search = $request['search'] ?? "";
+        if($search != "")
+        {
+            $tracks = Track::where('name','LIKE',"%$search%")->
+            orWhere('artist','LIKE',"%$search%")->
+            get();
+        }
+        else
+        {
+            $tracks = Track::all();
+        }
 
         return view('tracks.index',compact('tracks'))
             ->with(request()->input('page'));
@@ -119,11 +129,17 @@ class TrackController extends Controller
             'name' => 'required',
             'detail' => 'required',
         ]);
+        if (auth()->user()->id === $track->user_id) {
+            $track->update($request->all());
+
+            return redirect()->route('tracks.index')
+                ->with('success','Track updated successfully');
+        }
 
         $track->update($request->all());
 
         return redirect()->route('tracks.index')
-            ->with('success','Track updated successfully');
+            ->with('failure','Failed to delete track');
     }
 
     /**
@@ -134,9 +150,20 @@ class TrackController extends Controller
      */
     public function destroy(Track $track)
     {
-        $track->delete();
+        if (auth()->user()->id === $track->user_id) {
+            $track->delete();
+
+            return redirect()->route('tracks.index')
+                ->with('success','Product deleted successfully');
+        }
 
         return redirect()->route('tracks.index')
-            ->with('success','Product deleted successfully');
+            ->with('failure','Unable to delete track');
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
 }

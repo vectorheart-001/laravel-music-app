@@ -15,7 +15,7 @@ use \App\Http\Controllers;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::middleware([
@@ -27,9 +27,12 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-Route::get('/', [Controllers\TrackController::class, 'index']);
+
 Route::group(['middleware' => 'auth'],function() {
     Route::resource('tracks', Controllers\TrackController::class);
     Route::resource('comments', Controllers\CommentController::class);
     Route::resource('users',Controllers\UserController::class);
 });
+//pls ignore
+
+

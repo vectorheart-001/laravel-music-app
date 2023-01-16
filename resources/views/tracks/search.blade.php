@@ -9,12 +9,9 @@
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('tracks.create') }}"> Create New Product</a>
             </div>
-            <form class="text-right my-2 my-lg-0" >
-                <div class = "form-group">
-
-                    <input type="search" class = "form-control mr-sm-2" name="search" placeholder="Search..." >
-                </div>
-                <button class="bpx-6 h-12 visibility: hidden; uppercase font-semibold border-none tracking-wider border-2 border-black bg-teal-400 text-black">Search</button>
+            <form class="form-inline my-2 my-lg-0" type ="get" action="{{route('tracks.search')}}}">
+                <input class = "form-control mr-sm-2" name="query" typ="search" placeholder="Search...">
+                <button class="btn btn-outline-light my-2 my-sm-0" type ="submit">Search</button>
             </form>
         </div>
     </div>
@@ -40,18 +37,18 @@
                 <td>{{ $track->user->name}}</td>
                 <td>
                     <form action="{{ route('tracks.destroy',$track->id) }}" method="POST">
-                        <a class="px-6 h-12 visibility: hidden; uppercase font-semibold border-none tracking-wider border-2 border-black bg-teal-400 text-black"  href="{{ route('tracks.show',$track->id) }}">Show</a>
-                        <a class="px-6 h-12 visibility: hidden; uppercase font-semibold border-none tracking-wider border-2 border-black bg-teal-400 text-black" href="{{ route('tracks.edit',$track->id) }}">Edit</a>
+                        <button class="px-6 h-12 visibility: hidden; uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black"  href="{{ route('tracks.show',$track->id) }}">Show</button>
+                        <button class="px-6 h-12 visibility: hidden; uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black" href="{{ route('tracks.edit',$track->id) }}">Edit</button>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="px-6 h-12 visibility: hidden; uppercase font-semibold border-none tracking-wider border-2 border-black bg-teal-400 text-black">Delete</button>
+                        <button type="submit" class="px-6 h-12 visibility: hidden; uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black">Delete</button>
                     </form>
                 </td>
             </tr>
         @endforeach
 
     </table>
-
+    {{ $tracks->links() }}
 
 
 @endsection

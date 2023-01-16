@@ -7,18 +7,19 @@
 </head>
 <body>
 <div class="bg-gray-500 flex space-x-8 pl-3">
-    <a class = "text-left no-underline text-white" href="">Home</a>
+
+    <a class = "text-left no-underline text-white" href="{{ URL::route('tracks.index') }}">Home</a>
     <a class = "text-left no-underline text-white" href="{{ URL::route('tracks.index') }}">Track list</a>
-    <a class = "text-left no-underline text-white"  href="{{ URL::route('login') }}">Log in</a>
-    <a class = "text-left no-underline text-white" href="{{ URL::route('logout') }}">Log out</a>
+    @if(\Illuminate\Support\Facades\Auth::guest())
+        <a class = "text-left no-underline text-white"  href="{{ URL::route('login') }}">Log in</a>
+    @else
+        <a class = "text-left no-underline text-white" href=" {{ URL::route('profile.show') }}">Profile</a>
+    @endif
+        <a class = "text-left no-underline text-white" href="{{ URL::route('register') }}">Register</a>
 </div>
-<br>
-<br>
-<br>
-<br>
+
 <div class="container ">
 
-    <br>
 
     @yield('content')
 </div>
