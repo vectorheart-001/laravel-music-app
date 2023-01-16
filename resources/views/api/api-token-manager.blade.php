@@ -17,10 +17,10 @@
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
 
-            <!-- Token Permissions -->
+            <!-- Token Permission -->
             @if (Laravel\Jetstream\Jetstream::hasPermissions())
                 <div class="col-span-6">
-                    <x-jet-label for="permissions" value="{{ __('Permissions') }}" />
+                    <x-jet-label for="permissions" value="{{ __('Permission') }}" />
 
                     <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach (Laravel\Jetstream\Jetstream::$permissions as $permission)
@@ -77,7 +77,7 @@
 
                                     @if (Laravel\Jetstream\Jetstream::hasPermissions())
                                         <button class="cursor-pointer ml-6 text-sm text-gray-400 underline" wire:click="manageApiTokenPermissions({{ $token->id }})">
-                                            {{ __('Permissions') }}
+                                            {{ __('Permission') }}
                                         </button>
                                     @endif
 
@@ -118,10 +118,10 @@
         </x-slot>
     </x-jet-dialog-modal>
 
-    <!-- API Token Permissions Modal -->
+    <!-- API Token Permission Modal -->
     <x-jet-dialog-modal wire:model="managingApiTokenPermissions">
         <x-slot name="title">
-            {{ __('API Token Permissions') }}
+            {{ __('API Token Permission') }}
         </x-slot>
 
         <x-slot name="content">
