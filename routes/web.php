@@ -28,5 +28,8 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::get('/', [Controllers\TrackController::class, 'index']);
-Route::resource('tracks', Controllers\TrackController::class);
-Route::resource('comments',Controllers\CommentController::class);
+Route::group(['middleware' => 'auth'],function() {
+    Route::resource('tracks', Controllers\TrackController::class);
+    Route::resource('comments', Controllers\CommentController::class);
+    Route::resource('users',Controllers\UserController::class);
+});

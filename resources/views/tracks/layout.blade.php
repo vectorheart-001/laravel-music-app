@@ -8,9 +8,9 @@
 <body>
 <div class="bg-gray-500 flex space-x-8 pl-3">
     <a class = "text-left no-underline text-white" href="">Home</a>
-    <a class = "text-left no-underline text-white" href="">Track list</a>
-    <a class = "text-left no-underline text-white"  href="">Log in</a>
-    <a class = "text-left no-underline text-white" href="">Log out</a>
+    <a class = "text-left no-underline text-white" href="{{ URL::route('tracks.index') }}">Track list</a>
+    <a class = "text-left no-underline text-white"  href="{{ URL::route('login') }}">Log in</a>
+    <a class = "text-left no-underline text-white" href="{{ URL::route('logout') }}">Log out</a>
 </div>
 <br>
 <br>

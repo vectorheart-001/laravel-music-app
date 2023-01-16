@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="pull-left">
-                <h2>Laravel 9 CRUD Example</h2>
+                <h2>Track list</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('tracks.create') }}"> Create New Product</a>
@@ -18,26 +18,26 @@
         </div>
     @endif
 
-    <table class="table table-bordered">
+    <table class="table border-none">
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Artist</th>
-            <th width="280px">User_Id</th>
+            <th width="280px">Posted by</th>
         </tr>
         @foreach ($tracks as $track)
             <tr>
                 <td>{{ $track->id }}</td>
                 <td>{{ $track->name }}</td>
                 <td>{{ $track->artist}}</td>
-                <td>{{ $track->user_id}}</td>
+                <td>{{ $track->user->name}}</td>
                 <td>
                     <form action="{{ route('tracks.destroy',$track->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('tracks.show',$track->id) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('tracks.edit',$track->id) }}">Edit</a>
+                        <button class="px-6 h-12 visibility: hidden; uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black"  href="{{ route('tracks.show',$track->id) }}">Show</button>
+                        <button class="px-6 h-12 visibility: hidden; uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black" href="{{ route('tracks.edit',$track->id) }}">Edit</button>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="px-6 h-12 visibility: hidden; uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black">Delete</button>
                     </form>
                 </td>
             </tr>
