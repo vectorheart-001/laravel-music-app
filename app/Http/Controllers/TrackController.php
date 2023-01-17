@@ -20,6 +20,7 @@ class TrackController extends Controller
         {
             $tracks = Track::where('name','LIKE',"%$search%")->
             orWhere('artist','LIKE',"%$search%")->
+            orWhere('genre','LIKE',"%$search%")->
             get();
         }
         else
