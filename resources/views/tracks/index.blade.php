@@ -7,14 +7,14 @@
                 <h2>Track list</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('tracks.create') }}"> Create New Product</a>
+                <a class="btn btn-secondary text-white" href="{{ route('tracks.create') }}"> Add new track</a>
             </div>
             <form class="text-right my-2 my-lg-0" >
                 <div class = "form-group">
 
                     <input type="search" class = "form-control mr-sm-2" name="search" placeholder="Search..." >
                 </div>
-                <button class="bpx-6 h-12 visibility: hidden; uppercase font-semibold border-none tracking-wider border-2 border-black bg-teal-400 text-black">Search</button>
+                <button class="btn btn-secondary">Search</button>
             </form>
         </div>
     </div>
@@ -25,33 +25,33 @@
         </div>
     @endif
 
-    <table class="table border-none">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Artist</th>
-            <th width="280px">Posted by</th>
-        </tr>
+
         @foreach ($tracks as $track)
-            <tr>
-                <td>{{ $track->id }}</td>
-                <td>{{ $track->name }}</td>
-                <td>{{ $track->artist}}</td>
-                <td>{{ $track->user->name}}</td>
-                <td>
-                    <form action="{{ route('tracks.destroy',$track->id) }}" method="POST">
-                        <a class="px-6 h-12 visibility: hidden; uppercase font-semibold border-none tracking-wider border-2 border-black bg-teal-400 text-black"  href="{{ route('tracks.show',$track->id) }}">Show</a>
-                        <a class="px-6 h-12 visibility: hidden; uppercase font-semibold border-none tracking-wider border-2 border-black bg-teal-400 text-black" href="{{ route('tracks.edit',$track->id) }}">Edit</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="px-6 h-12 visibility: hidden; uppercase font-semibold border-none tracking-wider border-2 border-black bg-teal-400 text-black">Delete</button>
-                    </form>
-                </td>
-            </tr>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card mb-5 shadow-sm" style="height:320px ">
+
+                                <img src="{{asset('images/'.$track->cover_path)}}" class=" object-contain  img-fluid max-height:500px" style="width:400px ; height: 200px" />
+
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        <h5>{{$track->name}}</h5>
+                                    </div>
+                                    <div class="card-text">
+                                        <h7>{{ $track->artist}}</h7>
+                                    </div>
+                                    <form action="{{ route('tracks.destroy',$track->id) }}" method="POST">
+                                        <a class="btn btn-secondary"  href="{{ route('tracks.show',$track->id) }}">Show</a>
+                                        @if ($track->user_id == Auth::id())
+                                            <a class="btn btn-secondary" href="{{ route('tracks.edit',$track->id) }}">Edit</a>
+                                        @endif
+                                        @csrf
+                                        @method('DELETE')
+                                        @if ($track->user_id == Auth::id())
+                                            <button type="submit" class="btn btn-secondary">Delete</button>
+                                        @endif
+
+                                </div>
+                            </div>
+                        </div>
         @endforeach
-
-    </table>
-
-
-
 @endsection

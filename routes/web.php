@@ -16,7 +16,7 @@ use \App\Http\Controllers;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::middleware([
     'auth:sanctum',

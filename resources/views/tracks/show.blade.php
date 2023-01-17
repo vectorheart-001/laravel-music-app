@@ -52,10 +52,20 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-danger">Post</button>
-        @foreach ($track->comments as $comment)
-            <p>{{$comment->user->name}}</p>
-            <h5>{{$comment->content}}</h5>
+        @if ($track->user_id == Auth::id())
+            <button type="submit" class="btn btn-danger">Post</button>
+        @endif
+
+
+            <table class="table border-none">
+                @foreach ($track->comments as $comment)
+                    <tr>
+                        <td>
+                            <h3>{{$comment->user->name}}</h3>
+                            <p>{{$comment->content}}</p>
+                        </td>
+
+                    </tr>
         @endforeach
 
     </form>

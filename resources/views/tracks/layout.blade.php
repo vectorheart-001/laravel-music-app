@@ -8,7 +8,7 @@
 <body>
 <div class="bg-gray-500 flex space-x-8 pl-3">
 
-    <a class = "text-left no-underline text-white" href="{{ URL::route('/') }}">Home</a>
+    <a class = "text-left  no-underline text-white" href="">Home</a>
     <a class = "text-left no-underline text-white" href="{{ URL::route('tracks.index') }}">Track list</a>
     @if(\Illuminate\Support\Facades\Auth::guest())
         <a class = "text-left no-underline text-white"  href="{{ URL::route('login') }}">Log in</a>
@@ -16,6 +16,7 @@
         <a class = "text-left no-underline text-white" href=" {{ URL::route('profile.show') }}">Profile</a>
     @endif
         <a class = "text-left no-underline text-white" href="{{ URL::route('register') }}">Register</a>
+
 </div>
 
 <div class="container ">
