@@ -12,11 +12,11 @@
             </div>
         </div>
     </div>
-    <div class="flex p-6 font-mono h-full  bg-gray-500 " >
+    <div class="flex p-6 font-mono h-full rounded-lg  bg-gray-500 "  >
         <div class="flex-none w-48 mb-10 relative z-10 before:absolute before:top-1 before:left-1 before:w-full before:h-full before:bg-teal-400">
             <img src="{{asset('images/'.$track->cover_path)}}" alt="Image" class="absolute z-10 inset-0 w-full h-full object-cover rounded-lg" loading="lazy" />
         </div>
-        <form class="flex-auto space-x-4 pl-6">
+        <form class="flex-auto space-x-4 pl-6" style="padding: 3px;">
             <div class="relative p-8 flex flex-wrap items-baseline pb-6 before:bg-black before:absolute before:-top-6 before:bottom-0 before:-left-60 before:-right-6">
                 <h1 class="relative w-full flex-none mb-2 text-2xl font-semibold text-white">
                     {{ $track->name }}
@@ -24,15 +24,18 @@
                 <div class="relative text-lg text-white">
                     {{ $track->artist }}
                 </div>
+            </div>
 
-
+            <div class="relative text-lg text-white">
+                {{ $track->album }}
+            </div>
+            <div class="relative text-lg text-white">
+                {{ $track->genre }}
             </div>
             <div class="relative text-lg text-white">
                 {{ $track->track_link }}
             </div>
-            <button class="px-6 h-12 visibility: hidden; uppercase font-semibold tracking-wider border-2 border-black bg-teal-400 text-black" type="submit">
-                Buy now
-            </button>
+
 
 
         </form>

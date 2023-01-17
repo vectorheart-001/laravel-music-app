@@ -1,6 +1,9 @@
+
 @extends('tracks.layout')
 @vite('resources/css/app.css')
 @section('content')
+
+
     <div class="row">
         <div class="col-lg-12">
             <div class="pull-left">
@@ -12,7 +15,7 @@
             <form class="text-right my-2 my-lg-0" >
                 <div class = "form-group">
 
-                    <input type="search" class = "form-control mr-sm-2" name="search" placeholder="Search..." >
+                    <input type="search" class = "form-control mr-sm-2" name="search" placeholder="Search(artist or track name)..." >
                 </div>
                 <button class="btn btn-secondary">Search</button>
             </form>
@@ -28,16 +31,19 @@
 
         @foreach ($tracks as $track)
             <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="card mb-5 shadow-sm" style="height:320px ">
+                            <div class="card mb-5 shadow-lg" style="padding: 5px;height: 350px;width: 350px" >
 
-                                <img src="{{asset('images/'.$track->cover_path)}}" class=" object-contain  img-fluid max-height:500px" style="width:400px ; height: 200px" />
+                                <img src="{{asset('images/'.$track->cover_path)}}" class=" object-contain  img-fluid max-height:500px" style="width:400px ; height: 200px;" />
 
-                                <div class="card-body">
+                                <div class="card-body" style="padding: 5px">
                                     <div class="card-title">
                                         <h5>{{$track->name}}</h5>
                                     </div>
                                     <div class="card-text">
                                         <h7>{{ $track->artist}}</h7>
+                                    </div>
+                                    <div class="card-text">
+                                        <h7>{{ $track->genre}}</h7>
                                     </div>
                                     <form action="{{ route('tracks.destroy',$track->id) }}" method="POST">
                                         <a class="btn btn-secondary"  href="{{ route('tracks.show',$track->id) }}">Show</a>
@@ -55,3 +61,4 @@
                         </div>
         @endforeach
 @endsection
+

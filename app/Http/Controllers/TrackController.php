@@ -55,17 +55,9 @@ class TrackController extends Controller
         $request->validate([
             'name' => 'required',
             'artist' => 'required',
+            'genre' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $track_data = [
-            'name' => $request->input('name'),
-            'artist' => $request->input('artist'),
-            'album' => $request->input('album'),
-            'track_link' => $request->input('track_link'),
-            'user_id'=> Auth::id(),
-
-        ];
-
         if($request->hasFile('image'))
         {
             $file =$request->file('image');
@@ -80,7 +72,8 @@ class TrackController extends Controller
             'album' => $request->input('album'),
             'track_link' => $request->input('track_link'),
             'user_id'=> Auth::id(),
-            'cover_path' => $fileName
+            'cover_path' => $fileName,
+            'genre' => $request->input('genre'),
         ];
 
 

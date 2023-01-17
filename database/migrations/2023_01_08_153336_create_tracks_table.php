@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('artist');
             $table->string('album');
+            $table->string('genre');
             $table->string('cover_path')->nullable();
             $table->string('track_link');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');

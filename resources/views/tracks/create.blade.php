@@ -32,11 +32,13 @@
                     <strong>Name:</strong>
                     <input type="text" name="name" class="form-control" placeholder="Name">
                     <strong>Artist:</strong>
-                    <input type="text" name="artist" class="form-control" placeholder="Name">
+                    <input type="text" name="artist" class="form-control" placeholder="Artist">
                     <strong>Album:</strong>
-                    <input type="text" name="album" class="form-control" placeholder="Name">
+                    <input type="text" name="album" class="form-control" placeholder="Album">
                     <strong>Link to track:</strong>
-                    <input type="text" name="track_link" class="form-control" placeholder="Name">
+                    <input type="text" name="track_link" class="form-control" placeholder="Link to track...">
+                    <strong>Genre:</strong>
+                    <input type="text" name="genre" class="form-control" placeholder="Genre">
 
                 </div>
                  <div class="mb-3">

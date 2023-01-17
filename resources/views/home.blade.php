@@ -1,6 +1,7 @@
 @include('tracks.layout')
 @section('content')
     <div class ="relative w-40  overflow-hidden bg-pack-train" >
-        <img class="opacity-50 object-cover w-full h-full" src="{{asset('images/'.'FH4kbOPVQAswrJh.jpg')}}"  >
-        <div class="absolute w-full py-2.5 bottom-0 inset-x-0 bg-blue-400 text-white text-xs text-center leading-4">Welcome to the world of Drum'n'Bass</div>
+        <h1 class="carousel-caption text-9xl">Welcome to the world of DnBCentral.A website for sharing music links,be it to torrents or to sites</h1>
+        <img class="brightness-50 object-cover w-full h-full" src="{{asset('images/'.'FH4kbOPVQAswrJh.jpg')}}"  >
+
     </div>
