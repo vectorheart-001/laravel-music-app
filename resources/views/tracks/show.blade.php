@@ -55,9 +55,8 @@
                 </div>
             </div>
         </div>
-        @if ($track->user_id == Auth::id())
-            <button type="submit" class="btn btn-danger">Post</button>
-        @endif
+        <button type="submit" class="btn btn-secondary">Post</button>
+
 
 
             <table class="table border-none">
@@ -66,6 +65,7 @@
                         <td>
                             <h3>{{$comment->user->name}}</h3>
                             <p>{{$comment->content}}</p>
+
                         </td>
 
                     </tr>

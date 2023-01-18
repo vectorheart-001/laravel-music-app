@@ -38,7 +38,12 @@
                     <strong>Link to track:</strong>
                     <input type="text" name="track_link" class="form-control" placeholder="Link to track...">
                     <strong>Genre:</strong>
-                    <input type="text" name="genre" class="form-control" placeholder="Genre">
+                    <select class="form-control" name="genre" required focus>
+                        <option value="Rock"  selected>Rock</option>
+                        <option value="Drum'n'Bass"  selected>Drum'n'Bass</option>
+                        <option value="Vocaloid" selected>Vocaloid</option>
+                        <option value="EDM" selected>EDM</option>
+                    </select>
 
                 </div>
                  <div class="mb-3">

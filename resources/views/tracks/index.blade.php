@@ -47,15 +47,15 @@
                                     </div>
                                     <form action="{{ route('tracks.destroy',$track->id) }}" method="POST">
                                         <a class="btn btn-secondary"  href="{{ route('tracks.show',$track->id) }}">Show</a>
-                                        @if ($track->user_id == Auth::id())
+                                        @if ($track->user_id == Auth::id() || \Illuminate\Support\Facades\Auth::user()->roles()->pluck('title')->contains('Admin'))
                                             <a class="btn btn-secondary" href="{{ route('tracks.edit',$track->id) }}">Edit</a>
                                         @endif
                                         @csrf
                                         @method('DELETE')
-                                        @if ($track->user_id == Auth::id())
+                                        @if ($track->user_id == Auth::id() || \Illuminate\Support\Facades\Auth::user()->roles()->pluck('title')->contains('Admin'))
                                             <button type="submit" class="btn btn-secondary">Delete</button>
                                         @endif
-
+                                    </form>
                                 </div>
                             </div>
                         </div>
